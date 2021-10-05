@@ -4,16 +4,16 @@ import java.io.*;
 public class Recipe {
     String Name;
     String Description;
-    ArrayList<String> IngredientList;
-    ArrayList<String> CookingSteps;
+    String[] IngredientList;
+    String[] CookingSteps;
     int RecipeID;
 
-    public Recipe(String n, String d, ArrayList<String> i, ArrayList<String> c) {
+    public Recipe(String n, String d, String[] i, String[] c) {
         this.Name = n;
         this.Description = d;
         this.IngredientList = i;
         this.CookingSteps = c;
     }
 
-    
+
 }

@@ -7,8 +7,35 @@ public class Main {
 
         // we should have a function that should locate the seperate file that has our recipes and reads it
         ArrayList<Recipe> recipeList = new ArrayList<>();
-        // one person should work on the txt file and how were going to read/write
+        
+        try { // will try to read the recipelist.txt
+			// this scanner will scan through the file
+			Scanner scan = new Scanner(new FileInputStream("recipelist.txt"));
 
+			while (scan.hasNextLine()) {
+				// the first line is the "NAME" line
+				String[] NAME = scan.nextLine().split(":");
+				// the second line is the "DESCRIPTION"
+				String[] DESCRIPTION = scan.nextLine().split(":");
+
+                // the third and fourth line are the lists that are separated by a '~'
+                String[] INGREDIENTLIST = scan.nextLine().split(":")[1].split("~");
+                INGREDIENTLIST[0] = INGREDIENTLIST[0].trim();
+                String[] COOKINGSTEPS = scan.nextLine().split(":")[1].split("~");
+                COOKINGSTEPS[0] = COOKINGSTEPS[0].trim();
+
+                Recipe newRecipe = new Recipe(NAME[1].trim(), DESCRIPTION[1].trim(), INGREDIENTLIST, COOKINGSTEPS);
+
+				// add the recipe to the recipeList
+				recipeList.add(newRecipe);
+			} 
+			
+		} catch (FileNotFoundException fnf) {
+			fnf.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Program ending.");
+		} 
 
 
         // beginning of the user prompted program
