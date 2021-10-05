@@ -1,4 +1,4 @@
-NAME: blah
-DESCRIPTION: blah blah blah
-INGREDIENT-LIST: hello~world
-COOKING-STEPS: text~text~text
+NAME: name
+DESCRIPTION: boiled pasta
+INGREDIENT-LIST: bread~butter
+COOKING-STEPS: boil~heat~oil
