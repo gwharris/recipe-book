@@ -14,4 +14,6 @@ public class Recipe {
         this.IngredientList = i;
         this.CookingSteps = c;
     }
+
+    
 }
