@@ -46,6 +46,32 @@ public class Main {
             // one person work on this
             // this person should just receive the information for now as we dont have a template of how 
             // to read/write the recipes on another file
+            ArrayList<String> ingredients = new ArrayList<>();
+            ArrayList<String> steps = new ArrayList<>();
+            String ingredient = "";
+            String step = "";
+
+            System.out.println("Please enter the name of your recipe: ");
+            String inputname = scan.nextLine();
+            System.out.println("Please enter the description of your recipe: ");
+            String inputdesc = scan.nextLine();
+            System.out.println("How many ingredients does your recipe have? ");
+            int numingred = scan.nextInt();
+            for (int i = 0; i < numingred; i++){
+                System.out.println("Enter your ingredient: ");
+                ingredient = scan.nextLine();
+                ingredients.add(ingredient);
+            }
+            System.out.println("How many cooking steps does your recipe have? ");
+            int numsteps = scan.nextInt();
+            for (int i = 0; i < numsteps; i++){
+                System.out.println("Enter your cooking step: ");
+                step = scan.nextLine();
+                steps.add(step);
+            }
+            Recipe newRecipe = new Recipe(inputname, inputdesc, ingredients, steps);
+            recipeList.add(newRecipe);
+
         } else if(option == 2) { // Recipe Retrieval
             // two people should work on this. 
             // 1) the search function and the browsing all existing recipes
