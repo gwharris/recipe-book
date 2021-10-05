@@ -11,9 +11,10 @@ public class Recipe {
     public Recipe(String n, String d, String[] i, String[] c) {
         this.Name = n;
         this.Description = d;
+        // shallow copy, dont think we need a deep copy  
         this.IngredientList = i;
         this.CookingSteps = c;
     }
 
-
+    
 }
