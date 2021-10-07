@@ -20,9 +20,8 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         ArrayList<Recipe> recipeList = new ArrayList<>();
-        String fileName = args[0]; // recipelist.txt
 
-        File tempFile = new File(fileName);
+        File tempFile = new File("recipelist.txt");
         boolean exists = tempFile.exists();
         
         if(exists) { // checks if text file exists
@@ -57,7 +56,7 @@ public class Main {
 
         // beginning of the user prompted program
         System.out.println("Welcome to the Recipe Book! Here are the options:\n");
-        System.out.println("Enter '1' for Recipe Creation or '2' for Recipe Retrieval.");
+        System.out.println("Enter '1' for Recipe Creation or '2' for Recipe Retrieval. Enter '0' to quit.");
 
         // Check if user inputs an int
         String userInput = "empty";
@@ -67,8 +66,11 @@ public class Main {
             flag = isNumber(userInput);
         }
         
+        // Validate input
         double option = Double.parseDouble(userInput);
-        if(option == 1) { // Recipe Creation
+        if(option == 0) System.out.println("\nThanks for using the recipe book! \nProgram quitting.\n"); // Quit
+
+        else if(option == 1) { // Recipe Creation
             // one person work on this
             // this person should just receive the information for now as we dont have a template of how 
             // to read/write the recipes on another file
@@ -87,7 +89,7 @@ public class Main {
             input.nextLine();
             String[] ingredients = new String[numingred];
             for (int i = 0; i < numingred; i++){
-                System.out.println("Enter your ingredient: ");
+                System.out.println("\nEnter ingredient " + Integer.toString(i+1) + ": ");
                 ingredient = input.nextLine();
                 ingredients[i] = ingredient;
             }
@@ -98,7 +100,7 @@ public class Main {
             input.nextLine();
             String[] steps = new String[numsteps];
             for (int i = 0; i < numsteps; i++){
-                System.out.println("Enter your cooking step: ");
+                System.out.println("\nEnter cooking step " + Integer.toString(i+1) + ": ");
                 step = input.nextLine();
                 steps[i] = step;
             }
@@ -123,7 +125,7 @@ public class Main {
 
                 myWriter.close();
             } catch (IOException e) {
-                System.out.println("An error occurred.");
+                System.out.println("An error occurred and your recipe was not saved.");
                 e.printStackTrace();
             }
 
