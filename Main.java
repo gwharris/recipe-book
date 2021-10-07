@@ -67,9 +67,9 @@ public class Main {
             userInput = input.nextLine();
             flag = isNumber(userInput);
         }
-        
-        // Validate input
         double option = Double.parseDouble(userInput);
+
+        // Process user's choice
         if(option == 0) System.out.println("\nThanks for using the recipe book! \nProgram quitting.\n"); // Quit
 
         else if(option == 1) { // Recipe Creation
