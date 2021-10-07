@@ -51,6 +51,8 @@ public class Main {
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("Program ending.");
+                // NOTE THIS WILL NOT ACTUALLY END THE PROGRAM
+                // THIS IS A BUG ***
             } 
         }
 
@@ -110,6 +112,8 @@ public class Main {
 
             // writes the recipe onto the new recipelist
             try {
+                // THIS IS A BUG ***
+                // This is overwriting the file, not appending
                 FileWriter myWriter = new FileWriter("recipelist.txt");
                 myWriter.write("NAME: " + inputname + "\n");
                 myWriter.write("DESCRIPTION: " + inputdesc + "\n");
