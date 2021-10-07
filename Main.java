@@ -2,6 +2,20 @@ import java.util.*;
 import java.io.*; 
 
 public class Main {
+
+    // Method that checks numeric input
+    public static Boolean isNumber(String arg) {
+        try {
+            Double.parseDouble(arg);
+            return false; // Exit loop
+        }
+        catch(NumberFormatException e) {
+            System.out.println("Please enter an integer option.");
+            return true; // Keep looping
+        }
+    }
+
+    // Main
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
@@ -42,10 +56,18 @@ public class Main {
         }
 
         // beginning of the user prompted program
-        System.out.println("Enter '1' for Recipe Creation or '2' for Recipe Retrieval");
-        int option = input.nextInt();
-        input.nextLine();
+        System.out.println("Welcome to the Recipe Book! Here are the options:\n");
+        System.out.println("Enter '1' for Recipe Creation or '2' for Recipe Retrieval.");
 
+        // Check if user inputs an int
+        String userInput = "empty";
+        boolean flag = true;
+        while(flag) { // Keep looping until int
+            userInput = input.nextLine();
+            flag = isNumber(userInput);
+        }
+        
+        double option = Double.parseDouble(userInput);
         if(option == 1) { // Recipe Creation
             // one person work on this
             // this person should just receive the information for now as we dont have a template of how 
