@@ -37,7 +37,6 @@ public class Main {
             System.out.println("Program ending.");
         } 
 
-
         // beginning of the user prompted program
         System.out.println("Welcome to the Recipe Book! Here are the options:\n");
         System.out.println("Enter (1) for Recipe Creation or (2) for Recipe Retrieval. Enter (0) to quit.");
@@ -49,9 +48,9 @@ public class Main {
             userInput = input.nextLine();
             flag = isNumber(userInput);
         }
-        
-        // Validate input
         double option = Double.parseDouble(userInput);
+
+        // Process user's choice
         if(option == 0) System.out.println("\nThanks for using the recipe book! \nProgram quitting.\n"); // Quit
         else if(option == 1) { // Recipe Creation
             String ingredient = "";
