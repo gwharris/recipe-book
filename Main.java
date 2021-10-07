@@ -47,36 +47,32 @@ public class Main {
         input.nextLine();
 
         if(option == 1) { // Recipe Creation
-            // one person work on this
-            // this person should just receive the information for now as we dont have a template of how 
-            // to read/write the recipes on another file
             String ingredient = "";
             String step = "";
 
-            System.out.println("\nPlease enter the name of your recipe: ");
+            System.out.println("\nPlease enter the name of your recipe:");
             String inputname = input.nextLine();
 
-
-            System.out.println("\nPlease enter the description of your recipe: ");
+            System.out.println("\nPlease enter the description of your recipe:");
             String inputdesc = input.nextLine();
 
-            System.out.println("\nHow many ingredients does your recipe have? ");
+            System.out.println("\nHow many ingredients does your recipe have?");
             int numingred = input.nextInt();
             input.nextLine();
             String[] ingredients = new String[numingred];
             for (int i = 0; i < numingred; i++){
-                System.out.println("Enter your ingredient: ");
+                System.out.println("Enter ingredient " + (numingred+1) + ": ");
                 ingredient = input.nextLine();
                 ingredients[i] = ingredient;
             }
 
 
-            System.out.println("\nHow many cooking steps does your recipe have? ");
+            System.out.println("\nHow many cooking steps does your recipe have?");
             int numsteps = input.nextInt();
             input.nextLine();
             String[] steps = new String[numsteps];
             for (int i = 0; i < numsteps; i++){
-                System.out.println("Enter your cooking step: ");
+                System.out.println("Enter cooking step " + (numsteps+1) + ": ");
                 step = input.nextLine();
                 steps[i] = step;
             }
