@@ -56,7 +56,7 @@ public class Main {
 
         // beginning of the user prompted program
         System.out.println("Welcome to the Recipe Book! Here are the options:\n");
-        System.out.println("Enter '1' for Recipe Creation or '2' for Recipe Retrieval. Enter '0' to quit.");
+        System.out.println("Enter (1) for Recipe Creation or (2) for Recipe Retrieval. Enter (0) to quit.");
 
         // Check if user inputs an int
         String userInput = "empty";
@@ -134,7 +134,7 @@ public class Main {
             // 1) the search function and the browsing all existing recipes
             // 2) the recipe exploration...on the project 1 pdf
 
-            System.out.println("(1) Would you like to search for a recipe or (2) browse recipes? Enter 1 or 2.");
+            System.out.println("(1) Would you like to (1) search for a recipe or (2) browse recipes? Enter 1 or 2.");
             int inputType = input.nextInt();;
             int invalidFlag = 1;
             int searchType = 0;
