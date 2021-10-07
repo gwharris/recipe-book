@@ -16,5 +16,19 @@ public class Recipe {
         this.CookingSteps = c;
     }
 
-    
+    public String getName() {
+        return this.Name;
+    }
+
+    public void setName(String n) {
+        this.Name = n;
+    }
+
+    public String getDescription() {
+        return this.Description;
+    }
+
+    public void setDescription(String d) {
+        this.Description = d;
+    }
 }

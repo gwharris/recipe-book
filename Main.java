@@ -17,6 +17,8 @@ public class Main {
                 Scanner scan = new Scanner(new FileInputStream("recipelist.txt"));
 
                 while (scan.hasNextLine()) {
+                    scan.nextLine();
+
                     // the first line is the "NAME" line
                     String[] NAME = scan.nextLine().split(":");
                     // the second line is the "DESCRIPTION"
@@ -61,7 +63,7 @@ public class Main {
             input.nextLine();
             String[] ingredients = new String[numingred];
             for (int i = 0; i < numingred; i++){
-                System.out.println("Enter ingredient " + (numingred+1) + ": ");
+                System.out.println("Enter ingredient " + (i+1) + ": ");
                 ingredient = input.nextLine();
                 ingredients[i] = ingredient;
             }
@@ -72,36 +74,13 @@ public class Main {
             input.nextLine();
             String[] steps = new String[numsteps];
             for (int i = 0; i < numsteps; i++){
-                System.out.println("Enter cooking step " + (numsteps+1) + ": ");
+                System.out.println("Enter cooking step " + (i+1) + ": ");
                 step = input.nextLine();
                 steps[i] = step;
             }
 
             Recipe newRecipe = new Recipe(inputname, inputdesc, ingredients, steps);
             recipeList.add(newRecipe);
-
-
-
-            // writes the recipe onto the new recipelist
-            try {
-                FileWriter myWriter = new FileWriter("recipelist.txt");
-                myWriter.write("NAME: " + inputname + "\n");
-                myWriter.write("DESCRIPTION: " + inputdesc + "\n");
-                myWriter.write("INGREDIENT-LIST: " + ingredients[0]);
-                for(int i = 1; i < ingredients.length; i++) {
-                    myWriter.write("~" + ingredients[i]);
-                }
-                myWriter.write("\nCOOKING-STEPS: " + steps[0]);
-                for(int i = 1; i < steps.length; i++) {
-                    myWriter.write("~" + steps[i]);
-                }
-                myWriter.write("\n");
-
-                myWriter.close();
-            } catch (IOException e) {
-                System.out.println("An error occurred.");
-                e.printStackTrace();
-            }
 
         } else if(option == 2) { // Recipe Retrieval
             // two people should work on this. 
@@ -112,5 +91,30 @@ public class Main {
         } else { // error, end the program
             System.out.println("ERROR....Invalid Option");
         }
+
+
+            // writes all recipes in recipeList onto txt file
+            try {
+                FileWriter myWriter = new FileWriter("recipelist.txt");
+
+                for(int i = 0; i < recipeList.size(); i++) {
+                    myWriter.write("\n\n");
+                    myWriter.write("NAME: " + recipeList.get(i).getName() + "\n");
+                    myWriter.write("DESCRIPTION: " + recipeList.get(i).getDescription() + "\n");
+                    myWriter.write("INGREDIENT-LIST: " + recipeList.get(i).IngredientList[0]);
+                    for(int j = 1; j < recipeList.get(i).IngredientList.length; j++) {
+                        myWriter.write("~" + recipeList.get(i).IngredientList[j]);
+                    }
+                    myWriter.write("\nCOOKING-STEPS: " + recipeList.get(i).CookingSteps[0]);
+                    for(int j = 1; j < recipeList.get(i).CookingSteps.length; j++) {
+                        myWriter.write("~" + recipeList.get(i).CookingSteps[j]);
+                    }
+                }
+            
+                myWriter.close();
+            } catch (IOException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
     }
 }
