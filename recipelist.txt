@@ -1,15 +1,10 @@
 
-NAME: name
-DESCRIPTION: boiled pasta
-INGREDIENT-LIST: bread~butter
-COOKING-STEPS: boil~heat~oil
+NAME: Spaghetti
+DESCRIPTION: Pasta Dish
+INGREDIENT-LIST: pasta~salt~tomato sauce
+COOKING-STEPS: boil water~add pasta and salt~add tomato sauce
 
-NAME: here
-DESCRIPTION: sadjasdasjdoajsdi
-INGREDIENT-LIST: asd~asdada
-COOKING-STEPS: sda~asda
-
-NAME: anee
-DESCRIPTION: aoidjasd
-INGREDIENT-LIST: asfa
-COOKING-STEPS: asdon
+NAME: Example Name
+DESCRIPTION: Example Description
+INGREDIENT-LIST: water~ice
+COOKING-STEPS: boil water~thaw ice

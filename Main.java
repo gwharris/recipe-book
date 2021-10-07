@@ -134,18 +134,7 @@ public class Main {
                     //Implement Recipe Exploration (function would be easier as the other search also needs it)
                     System.out.println("\nRecipe Found\n\n");
 
-                    System.out.println("Name: " + recipeList.get(recipeIndex).getName());
-                    System.out.println("Description: " + recipeList.get(recipeIndex).getDescription());
-                    System.out.println("Ingredient List: ");
-                    String[] allIngredients = recipeList.get(recipeIndex).IngredientList;
-                    for(int i = 0; i < allIngredients.length; i++) {
-                        System.out.println("\t- " + allIngredients[i]);
-                    }
-                    System.out.println("Recipe Steps: ");
-                    String[] allSteps = recipeList.get(recipeIndex).CookingSteps;
-                    for(int i = 0; i < allSteps.length; i++) {
-                        System.out.println("\t" + (i+1) + ". " + allSteps[i]);
-                    }
+                    printRecipe(recipeIndex, recipeList);
                 } else {
                     System.out.println("There is no recipe under that search.");
                     //Could implement to make it loop back
@@ -153,20 +142,20 @@ public class Main {
 
             //Search by recipe list
             } else if (searchType == 2){ //searchType == 2
-                System.out.println("Please choose a recipe from the list below.");
+                System.out.println("\nChoose a recipe from the list below.");
                 for (int i = 0; i < recipeList.size(); i++) {
-                    //********Issue retreiving the recipe object*********
                     String recipeName = Integer.toString(i + 1) + ". " + recipeList.get(i).Name;
                     System.out.println(recipeName);
                 }
-                System.out.println("Please type the number of the recipe you would like: ");
+
+                System.out.println("\nPlease type the number of the recipe you would like: ");
                 try {
                     int recipeNum = input.nextInt() - 1;
+                    printRecipe(recipeNum, recipeList);
                 } catch (NumberFormatException n) {
                     System.out.println("An error occurred.");
                     //Can implement to loop back to search
                 }
-                //Implement Recipe Exploration use (recipeNum)
             } else {
                 System.out.println("ERROR....Something went wrong.");
             }
@@ -213,6 +202,21 @@ public class Main {
         } catch (IOException e) {
             System.out.println("An error occurred and your recipe was not saved.");
             e.printStackTrace();
+        }
+    }
+
+    public static void printRecipe(int recipeIndex, ArrayList<Recipe> rList) {
+        System.out.println("Name: " + rList.get(recipeIndex).getName());
+        System.out.println("Description: " + rList.get(recipeIndex).getDescription());
+        System.out.println("Ingredient List: ");
+        String[] allIngredients = rList.get(recipeIndex).IngredientList;
+        for(int i = 0; i < allIngredients.length; i++) {
+            System.out.println("\t- " + allIngredients[i]);
+        }
+        System.out.println("Recipe Steps: ");
+        String[] allSteps = rList.get(recipeIndex).CookingSteps;
+        for(int i = 0; i < allSteps.length; i++) {
+            System.out.println("\t" + (i+1) + ". " + allSteps[i]);
         }
     }
 }

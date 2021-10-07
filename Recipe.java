@@ -31,4 +31,12 @@ public class Recipe {
     public void setDescription(String d) {
         this.Description = d;
     }
+
+    public String[] getIngredients() {
+        return this.IngredientList;
+    }
+
+    public String[] getSteps() {
+        return this.CookingSteps;
+    }
 }
