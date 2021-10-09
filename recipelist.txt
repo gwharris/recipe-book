@@ -8,3 +8,8 @@ NAME: Example Name
 DESCRIPTION: Example Description
 INGREDIENT-LIST: water~ice
 COOKING-STEPS: boil water~thaw ice
+
+NAME: home
+DESCRIPTION: omdfafa
+INGREDIENT-LIST: adfsaf~asdfad
+COOKING-STEPS: asdf~asdf
