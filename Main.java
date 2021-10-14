@@ -148,17 +148,23 @@ public class Main {
 
                     System.out.println("\nPlease type the number of the recipe you would like: ");
                     try {
-                        int recipeNum = input.nextInt() - 1;
-                        printRecipe(recipeNum, recipeList);
+                        int recipeNum = input.nextInt();
+                        if (recipeNum == 0) {
+                            System.out.println("Not a valid integer. Please try again.");
+                        }
+                        else {
+                            recipeNum = recipeNum - 1;
+                            printRecipe(recipeNum, recipeList);
+                        }
                     } catch (NumberFormatException n) {
-                        System.out.println("An error occurred.");
+                        System.out.println("An error occurred. Please try again.");
                         //Can implement to loop back to search
                     }
                 } else {
-                    System.out.println("ERROR....Invalid Input");
+                    System.out.println("ERROR.... Invalid Input.");
                 }
             } else { 
-                System.out.println("ERROR....Invalid Input");
+                System.out.println("ERROR.... Invalid Input.");
             }  
         } while(continueLoop);
 
