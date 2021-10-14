@@ -13,3 +13,8 @@ NAME: home
 DESCRIPTION: omdfafa
 INGREDIENT-LIST: adfsaf~asdfad
 COOKING-STEPS: asdf~asdf
+
+NAME: recipe
+DESCRIPTION: asdasadsa
+INGREDIENT-LIST: asda~asdsd
+COOKING-STEPS: asda~asdasd
