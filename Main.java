@@ -107,7 +107,7 @@ public class Main {
                 // 1) the search function and the browsing all existing recipes
                 // 2) the recipe exploration...on the project 1 pdf
 
-                System.out.println("\n\n\n********** RECIPE SEARCH **********\n\n");
+                System.out.println("\n\n********** RECIPE SEARCH **********\n");
 
                 System.out.println("\nWould you like to (1) search for a recipe or (2) browse recipes? Enter 1 or 2.");
                 int inputType = input.nextInt();
@@ -123,7 +123,8 @@ public class Main {
                         searchType = 2; 
                         invalidFlag = 0;
                     } else {
-                        System.out.println("That was an invalid option.");
+                        System.out.println("That was an invalid option. Please try again.");
+                        inputType = input.nextInt();
                     }
                 }
 
