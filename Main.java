@@ -330,7 +330,8 @@ public class Main {
                 if(option == 1) {
                     recipeSteps = true;
                 } else {
-                    System.out.println("Invalid Input, Try Again.");
+                    System.out.println("Thank you! Breaking out of the recipe...");
+                    recipeSteps = false;
                 }
             } else if(recipeSteps) {
                 do {
