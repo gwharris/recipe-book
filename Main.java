@@ -39,6 +39,7 @@ public class Main {
             return;
         } 
 
+
         // beginning of the user prompted program
         System.out.println("\n\n--------------------------------------------------");
         System.out.println("Welcome to the Recipe Book! Here are your options!");
@@ -55,6 +56,7 @@ public class Main {
                 flag = isNumber(userInput);
             }
             double option = Double.parseDouble(userInput);
+            int displayOpt = -1;
 
             if(option == 0) {
                 continueLoop = false;
@@ -103,10 +105,6 @@ public class Main {
                 Recipe newRecipe = new Recipe(inputname, inputdesc, ingredients, steps);
                 recipeList.add(newRecipe);
             } else if(option == 2) {
-                // two people should work on this. 
-                // 1) the search function and the browsing all existing recipes
-                // 2) the recipe exploration...on the project 1 pdf
-
                 System.out.println("\n\n********** RECIPE SEARCH **********\n");
 
                 System.out.println("\nWould you like to (1) search for a recipe or (2) browse recipes? Enter 1 or 2.");
@@ -114,7 +112,7 @@ public class Main {
                 int invalidFlag = 1;
                 int searchType = 0;
 
-                //Choose search option and make sure there are no invalid inputs
+                // Choose search option and make sure there are no invalid inputs
                 while (invalidFlag == 1) {
                     if (inputType == 1) {
                         searchType = 1;
@@ -128,17 +126,17 @@ public class Main {
                     }
                 }
 
-                //Retrieve Recipes
+                // Retrieve Recipes
                 String inputSearch;
 
-                //Search with name
+                // Search with name
                 if (searchType == 1) {
                     System.out.println("\n\nWhat recipe would you like to look up? Type in below: ");
                     input.nextLine();
                     inputSearch = input.nextLine().toLowerCase();
                     
                     searchRecipe(recipeList, inputSearch);
-                //Search by recipe list
+                // Search by recipe list
                 } else if (searchType == 2){ 
                     System.out.println("\nChoose a recipe from the list below.");
                     for (int i = 0; i < recipeList.size(); i++) {
@@ -151,10 +149,19 @@ public class Main {
                         int recipeNum = input.nextInt();
                         if (recipeNum == 0) {
                             System.out.println("Not a valid integer. Please try again.");
-                        }
-                        else {
+                        } else {
                             recipeNum = recipeNum - 1;
-                            printRecipe(recipeNum, recipeList);
+
+                            System.out.println("\nWould you like to (1) display the whole recipe or (2) display the recipe step-by-step?");
+                            displayOpt = input.nextInt();
+
+                            if(displayOpt == 1) {
+                                printRecipe(recipeNum, recipeList);
+                            } else if(displayOpt == 2) {
+                                printSteps(recipeNum, recipeList);
+                            } else {
+                                System.out.println("\nERROR....INVALID OPTION");
+                            }
                         }
                     } catch (NumberFormatException n) {
                         System.out.println("An error occurred. Please try again.");
@@ -165,7 +172,7 @@ public class Main {
                 }
             } else { 
                 System.out.println("ERROR.... Invalid Input.");
-            }  
+            }
         } while(continueLoop);
 
         writeRecipes(recipeList);
@@ -245,10 +252,10 @@ public class Main {
 
         if (recipeIndex != -1) {
             //Implement Recipe Exploration (function would be easier as the other search also needs it)
-            System.out.println("\n\n-------Recipe Found-------\n");
+            System.out.println("\n\n\n-------Recipe Found-------\n\n");
 
             do {
-                System.out.println("\nWould you like to (1) display the whole recipe or (2) display the recipe step-by-step? Enter 1 or 2.");
+                System.out.println("\nWould you like to (1) display the whole recipe or (2) display the recipe step-by-step?");
                 displayOpt = input.nextInt();
 
                 if(displayOpt == 1) {
@@ -256,7 +263,7 @@ public class Main {
                 } else if(displayOpt == 2) {
                     printSteps(recipeIndex, rList);
                 } else {
-                    System.out.println("ERROR....INVALID OPTION....TRY AGAIN");
+                    System.out.println("\nERROR....INVALID OPTION....TRY AGAIN");
                 }
             } while(displayOpt != 1 && displayOpt != 2);
         } else {
@@ -267,17 +274,70 @@ public class Main {
 
     // Method that prints out specific recipe in Steps
     public static void printSteps(int recipeIndex, ArrayList<Recipe> rList) {
-        System.out.println("------------------------------------------\n");
-        System.out.println("Name: " + rList.get(recipeIndex).getName());
-        System.out.println("Description: " + rList.get(recipeIndex).getDescription());
-        System.out.println("Ingredient List: ");
-        String[] allIngredients = rList.get(recipeIndex).IngredientList;
-        for(int i = 0; i < allIngredients.length; i++) {
-            System.out.println("\t- " + allIngredients[i]);
-        }
-        System.out.println("------------------------------------------");
+        int step = 0;
+        int lastStep = rList.get(recipeIndex).getSteps().length;
+        String[] CookingSteps = rList.get(recipeIndex).getSteps();
+        boolean recipeSteps = false;
+        int option = -1;
+        Scanner input = new Scanner(System.in);
 
-        System.out.println("Are you ready to show the");
+        do {
+            if(!recipeSteps) {
+                System.out.println("\n\n\n------------------------------------------\n");
+                System.out.println("Name: " + rList.get(recipeIndex).getName());
+                System.out.println("Description: " + rList.get(recipeIndex).getDescription());
+                System.out.println("Ingredient List: ");
+                String[] allIngredients = rList.get(recipeIndex).IngredientList;
+                for(int i = 0; i < allIngredients.length; i++) {
+                    System.out.println("\t- " + allIngredients[i]);
+                }
+                System.out.println("\n------------------------------------------\n");
+
+                System.out.println("\nWould you like to (1) view the first step of the recipe? If not, input any number.");
+                option = input.nextInt();
+
+                if(option == 1) {
+                    recipeSteps = true;
+                } else {
+                    System.out.println("Invalid Input, Try Again.");
+                }
+            } else if(recipeSteps) {
+                do {
+                    System.out.println("\n\nStep " + (step+1) + ": ");
+                    System.out.println("\t" + CookingSteps[step]);
+
+                    if(step == 0) {
+                        System.out.println("\n\nWould you like to (1) go back to the recipe information or (2) continue to the next step.");
+                        option = input.nextInt();
+
+                        if(option == 1) {
+                            recipeSteps = false;
+                            break;
+                        } else if(option == 2) {
+                            step += 1;
+                        } else {
+                            System.out.println("Invalid Input Try Again");
+                        }
+                    } else {
+                        if(step == lastStep - 1) {
+                            System.out.println("\n\nWould you like to (1) go to the previous step or (2) finish the Recipe Retrieval.");
+                        } else {
+                            System.out.println("\n\nWould you like to (1) go to the previous step or (2) continue to the next step.");
+                        }
+                        option = input.nextInt();
+
+                        if(option == 1) {
+                            step -= 1;
+                        } else if(option == 2) {
+                            step += 1;
+                        } else {
+                            System.out.println("Invalid Input Try Again");
+                        }
+                    }
+                } while(step != lastStep);
+            }
+        } while(step != lastStep);
+        System.out.println("\n");
     }
 }
 
