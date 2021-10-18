@@ -72,8 +72,6 @@ public class Main {
 
                 System.out.println("\n\n\n********** RECIPE CREATION **********\n\n");
 
-
-
                 System.out.println("\nPlease enter the name of your recipe:");
                 String inputname = input.nextLine();
 
@@ -81,24 +79,57 @@ public class Main {
                 String inputdesc = input.nextLine();
 
                 System.out.println("\nHow many ingredients does your recipe have?");
-                int numingred = input.nextInt();
-                input.nextLine();
-                String[] ingredients = new String[numingred];
+                String numval = input.nextLine();
+                while (isNumber(numval)) {
+                    numval = input.nextLine();
+                }
+                double numingred = Double.parseDouble(numval);
+                int invalidFlag = 1;
+
+                //Choose search option and make sure there are no invalid inputs
+                while (invalidFlag == 1) {
+                    if (numingred != 0) {
+                        invalidFlag = 0;
+                    } else {
+                        System.out.println("That was an invalid integer. Please try again.");
+                        numingred = input.nextInt();
+                    }
+                }
+
+                String[] ingredients = new String[(int) numingred];
+                System.out.print("\n");
                 for (int i = 0; i < numingred; i++){
-                    System.out.print("\n  -Enter ingredient " + (i+1) + ": ");
+                    System.out.print("-Enter ingredient " + (i+1) + ": ");
                     ingredient = input.nextLine();
                     ingredients[i] = ingredient;
                 }
+                System.out.print("\n");
 
                 System.out.println("\nHow many cooking steps does your recipe have?");
-                int numsteps = input.nextInt();
-                input.nextLine();
-                String[] steps = new String[numsteps];
+                numval = input.nextLine();
+                while (isNumber(numval)) {
+                    numval = input.nextLine();
+                }
+                double numsteps = Double.parseDouble(numval);
+
+                //Choose search option and make sure there are no invalid inputs
+                while (invalidFlag == 1) {
+                    if (numsteps != 0) {
+                        invalidFlag = 0;
+                    } else {
+                        System.out.println("That was an invalid integer. Please try again.");
+                        numsteps = input.nextInt();
+                    }
+                }
+
+                String[] steps = new String[(int) numsteps];
+                System.out.print("\n");
                 for (int i = 0; i < numsteps; i++){
-                    System.out.print("\n  -Enter cooking step " + (i+1) + ": ");
+                    System.out.print("-Enter cooking step " + (i+1) + ": ");
                     step = input.nextLine();
                     steps[i] = step;
                 }
+                System.out.print("\n");
 
                 System.out.println("\n\n\n-------Recipe is now added onto your recipe list-------\n\n");
 
@@ -168,11 +199,11 @@ public class Main {
                         //Can implement to loop back to search
                     }
                 } else {
-                    System.out.println("ERROR.... Invalid Input.");
+                    System.out.println("Not a valid integer. Please try again.");
                 }
             } else { 
-                System.out.println("ERROR.... Invalid Input.");
-            }
+                System.out.println("Not a valid integer. Please try again.");
+            }  
         } while(continueLoop);
 
         writeRecipes(recipeList);
