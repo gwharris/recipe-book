@@ -339,7 +339,7 @@ public class Main {
                     System.out.println("\t" + CookingSteps[step]);
 
                     if(step == 0) {
-                        System.out.println("\n\nWould you like to (1) go back to the recipe information or (2) continue to the next step.");
+                        System.out.println("\n\nWould you like to (1) go back to the recipe information or (2) continue to the next step?");
                         option = input.nextInt();
 
                         if(option == 1) {
@@ -348,7 +348,7 @@ public class Main {
                         } else if(option == 2) {
                             step += 1;
                         } else {
-                            System.out.println("Invalid Input Try Again");
+                            System.out.println("Invalid input, please try again.");
                         }
                     } else {
                         if(step == lastStep - 1) {
@@ -363,7 +363,7 @@ public class Main {
                         } else if(option == 2) {
                             step += 1;
                         } else {
-                            System.out.println("Invalid Input Try Again");
+                            System.out.println("Invalid input, please try again.");
                         }
                     }
                 } while(step != lastStep);
