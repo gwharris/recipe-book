@@ -180,10 +180,10 @@ public class Main {
                         try {
                             recipeNum = input.nextInt();
                         } catch (InputMismatchException x) {
-                            System.out.println(x);
+                            System.out.println("Please provide an integer");
                         }
                         if (recipeNum == 0) {
-                            System.out.println("Not a valid integer. Please try again.");
+                            System.out.println("\nNot a valid integer. Please try again.");
                         } else {
                             recipeNum = recipeNum - 1;
 
@@ -192,9 +192,17 @@ public class Main {
                             displayOpt = input.nextInt();
 
                             if (displayOpt == 1) {
-                                printRecipe(recipeNum, recipeList);
+                                try {
+                                    printRecipe(recipeNum, recipeList);
+                                } catch (IndexOutOfBoundsException a) {
+                                    System.out.println(a);
+                                }
                             } else if (displayOpt == 2) {
-                                printSteps(recipeNum, recipeList);
+                                try {
+                                    printSteps(recipeNum, recipeList);
+                                } catch (IndexOutOfBoundsException a) {
+                                    System.out.println("\nInvalid recipe choice. Please choose a valid option");
+                                }
                             } else {
                                 System.out.println("\nERROR....INVALID OPTION");
                             }
