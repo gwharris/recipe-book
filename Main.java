@@ -87,7 +87,7 @@ public class Main {
 
                 // Choose search option and make sure there are no invalid inputs
                 while (invalidFlag == 1) {
-                    if (numingred != 0) {
+                    if (numingred > 0) {
                         invalidFlag = 0;
                     } else {
                         System.out.println("That was an invalid integer. Please try again.");
