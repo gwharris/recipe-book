@@ -197,9 +197,14 @@ public class Main {
                         } else {
                             recipeNum = recipeNum - 1;
 
-                            System.out.println(
-                                    "\nWould you like to (1) display the whole recipe or (2) display the recipe step-by-step?");
-                            displayOpt = input.nextInt();
+                            try {
+                                System.out.println(
+                                        "\nWould you like to (1) display the whole recipe or (2) display the recipe step-by-step?");
+                                displayOpt = input.nextInt();
+                            } catch (InputMismatchException e) {
+                                input.next();
+                                displayOpt = 0;
+                            }
 
                             if (displayOpt == 1) {
                                 try {
@@ -312,7 +317,11 @@ public class Main {
             do {
                 System.out.println(
                         "\nWould you like to (1) display the whole recipe or (2) display the recipe step-by-step?");
-                displayOpt = input.nextInt();
+                try {
+                    displayOpt = input.nextInt();
+                } catch (InputMismatchException e) {
+                    input.next();
+                }
 
                 if (displayOpt == 1) {
                     printRecipe(recipeIndex, rList);
@@ -350,8 +359,13 @@ public class Main {
                 System.out.println("\n------------------------------------------\n");
 
                 System.out.println(
-                        "\nWould you like to (1) view the first step of the recipe? If not, input any number.");
-                option = input.nextInt();
+                        "\nWould you like to (1) view the first step of the recipe? If not, input anything else.");
+                try {
+                    option = input.nextInt();
+                } catch (InputMismatchException e) {
+                    input.next();
+                    option = -1;
+                }
 
                 if (option == 1) {
                     recipeSteps = true;
@@ -367,7 +381,12 @@ public class Main {
                     if (step == 0) {
                         System.out.println(
                                 "\n\nWould you like to (1) go back to the recipe information or (2) continue to the next step?");
-                        option = input.nextInt();
+                        try {
+                            option = input.nextInt();
+                        } catch (InputMismatchException e) {
+                            input.next();
+                            option = -1;
+                        }
 
                         if (option == 1) {
                             recipeSteps = false;
@@ -385,7 +404,12 @@ public class Main {
                             System.out.println(
                                     "\n\nWould you like to (1) go to the previous step or (2) continue to the next step.");
                         }
-                        option = input.nextInt();
+                        try {
+                            option = input.nextInt();
+                        } catch (InputMismatchException e) {
+                            input.next();
+                            option = -1;
+                        }
 
                         if (option == 1) {
                             step -= 1;
