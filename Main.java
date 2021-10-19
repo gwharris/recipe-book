@@ -137,7 +137,8 @@ public class Main {
             } else if (option == 2) {
                 System.out.println("\n\n********** RECIPE SEARCH **********\n");
 
-                System.out.println("\nWould you like to (1) search for a recipe or (2) browse recipes? Enter 1 or 2.");
+                System.out.println(
+                        "\nWould you like to (1) search for a recipe, (2) browse recipes, or (3) get the chef's selection? Enter 1, 2, or 3.");
                 int inputType = input.nextInt();
                 int invalidFlag = 1;
                 int searchType = 0;
@@ -147,7 +148,7 @@ public class Main {
                     if (inputType == 1) {
                         searchType = 1;
                         invalidFlag = 0;
-                    } else if (inputType == 2) {
+                    } else if (inputType == 2 || inputType == 3) {
                         searchType = 2;
                         invalidFlag = 0;
                     } else {
@@ -168,20 +169,24 @@ public class Main {
                     searchRecipe(recipeList, inputSearch);
                     // Search by recipe list
                 } else if (searchType == 2) {
-                    System.out.println("\nChoose a recipe from the list below.");
-                    for (int i = 0; i < recipeList.size(); i++) {
-                        String recipeName = Integer.toString(i + 1) + ". " + recipeList.get(i).Name;
-                        System.out.println(recipeName);
-                    }
+                    int recipeNum = 0;
+                    if (inputType == 3) {
+                        recipeNum = (int) ((Math.random() * (recipeList.size() - 1)) + 1);
+                    } else {
+                        System.out.println("\nChoose a recipe from the list below.");
+                        for (int i = 0; i < recipeList.size(); i++) {
+                            String recipeName = Integer.toString(i + 1) + ". " + recipeList.get(i).Name;
+                            System.out.println(recipeName);
+                        }
 
-                    System.out.println("\nPlease type the number of the recipe you would like: ");
-                    try {
-                        int recipeNum = 0;
+                        System.out.println("\nPlease type the number of the recipe you would like: ");
                         try {
                             recipeNum = input.nextInt();
                         } catch (InputMismatchException x) {
                             System.out.println("Please provide an integer");
                         }
+                    }
+                    try {
                         if (recipeNum == 0) {
                             System.out.println("\nNot a valid integer. Please try again.");
                         } else {
@@ -195,7 +200,7 @@ public class Main {
                                 try {
                                     printRecipe(recipeNum, recipeList);
                                 } catch (IndexOutOfBoundsException a) {
-                                    System.out.println(a);
+                                    System.out.println("\nInvalid recipe choice. Please choose a valid option");
                                 }
                             } else if (displayOpt == 2) {
                                 try {
