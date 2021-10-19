@@ -9,11 +9,6 @@ DESCRIPTION: Example Description
 INGREDIENT-LIST: water~ice
 COOKING-STEPS: boil water~thaw ice
 
-NAME: Check
-DESCRIPTION: checkcheckcheck
-INGREDIENT-LIST: check ingredient 1~check ingredient 2
-COOKING-STEPS: check step 1~check step 2
-
 NAME: Example Recipe
 DESCRIPTION: asdlfaasdadd
 INGREDIENT-LIST: bbbbbb~aaaaaaaa

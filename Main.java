@@ -50,13 +50,14 @@ public class Main {
 
             String userInput = "";
             boolean flag = true;
-            double option = Double.parseDouble(userInput);
-            int displayOpt = -1;
 
             while (flag) { // Keep looping until int
                 userInput = input.nextLine();
                 flag = isNumber(userInput);
             }
+
+            double option = Double.parseDouble(userInput);
+            int displayOpt = -1;
 
             if (option == 0) {
                 continueLoop = false;
@@ -373,8 +374,10 @@ public class Main {
                 }
             } else if (recipeSteps) {
                 do {
-                    System.out.println("\n\nStep " + (step + 1) + ": ");
-                    System.out.println("\t" + CookingSteps[step]);
+                    System.out.println("\n\n--------------------------------------------");
+                    System.out.println("Step " + (step + 1) + ": ");
+                    System.out.println("\t- " + CookingSteps[step]);
+                    System.out.println("--------------------------------------------");
 
                     if (step == 0) {
                         System.out.println(
