@@ -9,12 +9,17 @@ DESCRIPTION: Example Description
 INGREDIENT-LIST: water~ice
 COOKING-STEPS: boil water~thaw ice
 
-NAME: home
-DESCRIPTION: omdfafa
-INGREDIENT-LIST: adfsaf~asdfad
-COOKING-STEPS: asdf~asdf
+NAME: Check
+DESCRIPTION: checkcheckcheck
+INGREDIENT-LIST: check ingredient 1~check ingredient 2
+COOKING-STEPS: check step 1~check step 2
 
-NAME: recipe
-DESCRIPTION: asdasadsa
-INGREDIENT-LIST: asda~asdsd
-COOKING-STEPS: asda~asdasd
+NAME: Example Recipe
+DESCRIPTION: asdlfaasdadd
+INGREDIENT-LIST: bbbbbb~aaaaaaaa
+COOKING-STEPS: 111111~222222
+
+NAME: Instant Ramen
+DESCRIPTION: It is Instant Ramen
+INGREDIENT-LIST: Water~Noodles
+COOKING-STEPS: Boil Water~Add Noodles

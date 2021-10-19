@@ -50,12 +50,13 @@ public class Main {
 
             String userInput = "";
             boolean flag = true;
+            double option = Double.parseDouble(userInput);
+            int displayOpt = -1;
+
             while (flag) { // Keep looping until int
                 userInput = input.nextLine();
                 flag = isNumber(userInput);
             }
-            double option = Double.parseDouble(userInput);
-            int displayOpt = -1;
 
             if (option == 0) {
                 continueLoop = false;
@@ -102,7 +103,6 @@ public class Main {
                     ingredient = input.nextLine();
                     ingredients[i] = ingredient;
                 }
-                System.out.print("\n");
 
                 System.out.println("\nHow many cooking steps does your recipe have?");
                 numval = input.nextLine();
@@ -128,7 +128,6 @@ public class Main {
                     step = input.nextLine();
                     steps[i] = step;
                 }
-                System.out.print("\n");
 
                 System.out.println("\n\n\n-------Recipe is now added onto your recipe list-------\n\n");
 
@@ -198,8 +197,7 @@ public class Main {
                             recipeNum = recipeNum - 1;
 
                             try {
-                                System.out.println(
-                                        "\nWould you like to (1) display the whole recipe or (2) display the recipe step-by-step?");
+                                System.out.println("\nWould you like to (1) display the whole recipe or (2) display the recipe step-by-step?");
                                 displayOpt = input.nextInt();
                             } catch (InputMismatchException e) {
                                 input.next();
