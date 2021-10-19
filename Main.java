@@ -137,14 +137,20 @@ public class Main {
             } else if (option == 2) {
                 System.out.println("\n\n********** RECIPE SEARCH **********\n");
 
-                System.out.println(
-                        "\nWould you like to (1) search for a recipe, (2) browse recipes, or (3) get the chef's selection? Enter 1, 2, or 3.");
-                int inputType = input.nextInt();
                 int invalidFlag = 1;
                 int searchType = 0;
+                int inputType = 0;
 
                 // Choose search option and make sure there are no invalid inputs
                 while (invalidFlag == 1) {
+                    System.out.println(
+                        "\nWould you like to (1) search for a recipe, (2) browse recipes, or (3) get the chef's selection? Enter 1, 2, or 3.");
+
+                    try {
+                        inputType = input.nextInt();
+                    } catch (InputMismatchException e) {
+                        input.next();
+                    }
                     if (inputType == 1) {
                         searchType = 1;
                         invalidFlag = 0;
@@ -153,7 +159,6 @@ public class Main {
                         invalidFlag = 0;
                     } else {
                         System.out.println("That was an invalid option. Please try again.");
-                        inputType = input.nextInt();
                     }
                 }
 
